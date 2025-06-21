@@ -1,2 +1,3 @@
-2025/06/21-19:59:51.917 47bad3 Creating DB /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Sync Data/LevelDB since it was missing.
-2025/06/21-19:59:51.935 47bad3 Reusing MANIFEST /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Sync Data/LevelDB/MANIFEST-000001
+2025/06/21-22:14:40.573 486260 Reusing MANIFEST /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Sync Data/LevelDB/MANIFEST-000001
+2025/06/21-22:14:40.583 486260 Recovering log #3
+2025/06/21-22:14:40.583 486260 Reusing old log /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Sync Data/LevelDB/000003.log 
