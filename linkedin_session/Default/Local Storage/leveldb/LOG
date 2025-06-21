@@ -1,2 +1,3 @@
-2025/06/21-19:59:51.972 47bb2d Creating DB /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Local Storage/leveldb since it was missing.
-2025/06/21-19:59:51.979 47bb2d Reusing MANIFEST /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/06/21-22:14:40.621 4862a5 Reusing MANIFEST /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/06/21-22:14:40.624 4862a5 Recovering log #3
+2025/06/21-22:14:40.624 4862a5 Reusing old log /Users/thushara/Desktop/bot/linkedin/Backend/linkedin_session/Default/Local Storage/leveldb/000003.log 

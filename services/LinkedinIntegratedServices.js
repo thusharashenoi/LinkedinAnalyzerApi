@@ -50,7 +50,7 @@ class LinkedInIntegrationService {
         console.log('🔍 Starting LinkedIn screenshot process...');
 
         const browser = await puppeteer.launch({
-            headless: new, // Keep this for debugging
+            headless: true, // Keep this for debugging
             defaultViewport: null,
             args: [
                 '--no-sandbox',
@@ -211,7 +211,7 @@ class LinkedInIntegrationService {
     }
 
     async createPythonAnalysisScript() {
-        const pythonScriptContent = await fs.readFile('./scripts/analysis.py', 'utf8');
+        const pythonScriptContent = await fs.readFile('./scripts/linkedin_analysis.py', 'utf8');
         try {
             await fs.writeFile(this.pythonScript, pythonScriptContent);
         } catch (error) {
