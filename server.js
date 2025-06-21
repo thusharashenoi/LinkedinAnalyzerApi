@@ -90,7 +90,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-const linkedinRoutes = require('./Routes/linkedin');
+const linkedinRoutes = require('./routes/linkedin');
 app.use('/api/linkedin', linkedinRoutes);
 
 // Health check
