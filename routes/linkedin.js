@@ -4,7 +4,7 @@ const router = express.Router();
 const LinkedInIntegrationService = require('../services/LinkedinIntegratedServices');
 const path = require('path');
 
-// Initialize LinkedIn service
+// Initialize LinkedIn services
 const linkedInService = new LinkedInIntegrationService();
 
 // POST /api/linkedin/analyze - Start LinkedIn analysis (only requires profileUrl)
