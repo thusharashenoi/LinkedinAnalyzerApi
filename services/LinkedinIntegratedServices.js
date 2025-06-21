@@ -50,7 +50,7 @@ class LinkedInIntegrationService {
         console.log('🔍 Starting LinkedIn screenshot process...');
 
         const browser = await puppeteer.launch({
-            headless: true, // Keep this for debugging
+            headless: new, // Keep this for debugging
             defaultViewport: null,
             args: [
                 '--no-sandbox',
