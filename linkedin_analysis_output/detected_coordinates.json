@@ -1,11 +1,24 @@
 {
   "detected_sections": [
     {
+      "section_name": "About",
+      "first_letter": "A",
+      "title_coordinates": [
+        4.5,
+        15.6
+      ],
+      "confidence": 95,
+      "font_size_estimate": "medium",
+      "text_style": "bold",
+      "notes": "Clear header at coordinates, bold formatting",
+      "coordinate_precision": "high"
+    },
+    {
       "section_name": "Experience",
       "first_letter": "E",
       "title_coordinates": [
-        12.01,
-        40.66
+        4.5,
+        39.0
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -17,8 +30,8 @@
       "section_name": "Education",
       "first_letter": "E",
       "title_coordinates": [
-        12.01,
-        55.07
+        4.5,
+        55.5
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -30,8 +43,8 @@
       "section_name": "Licenses & certifications",
       "first_letter": "L",
       "title_coordinates": [
-        12.01,
-        60.37
+        4.5,
+        61.8
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -43,8 +56,8 @@
       "section_name": "Skills",
       "first_letter": "S",
       "title_coordinates": [
-        12.01,
-        65.24
+        4.5,
+        67.5
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -56,8 +69,8 @@
       "section_name": "Honors & awards",
       "first_letter": "H",
       "title_coordinates": [
-        12.01,
-        73.22
+        4.5,
+        73.3
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -69,8 +82,8 @@
       "section_name": "Test scores",
       "first_letter": "T",
       "title_coordinates": [
-        12.01,
-        78.36
+        4.5,
+        79.1
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -82,8 +95,8 @@
       "section_name": "Languages",
       "first_letter": "L",
       "title_coordinates": [
-        12.01,
-        83.33
+        4.5,
+        84.7
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -95,8 +108,8 @@
       "section_name": "Interests",
       "first_letter": "I",
       "title_coordinates": [
-        12.01,
-        89.54
+        4.5,
+        90.4
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -106,10 +119,10 @@
     }
   ],
   "detection_metadata": {
-    "total_sections_found": 8,
+    "total_sections_found": 9,
     "image_dimensions": [
-      768,
-      2198
+      500,
+      2259
     ],
     "layout_type": "desktop",
     "scroll_position": "top",
