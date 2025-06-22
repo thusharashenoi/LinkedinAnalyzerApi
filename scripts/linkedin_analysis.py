@@ -1031,7 +1031,7 @@ def main():
     """Main function to run the LinkedIn Profile Analyzer"""
     
     # Configuration
-    API_KEY = os.getenv('API_KEY')  # Replace with your actual API key
+    API_KEY = os.getenv('GEMINI_API_KEY')  # Replace with your actual API key
     IMAGE_PATH = "screenshots/linkedin.png"  # Path to your LinkedIn screenshot
     
     # Initialize analyzer

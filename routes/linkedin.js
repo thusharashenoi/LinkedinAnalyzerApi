@@ -1,18 +1,35 @@
-// LinkedIn API Routes - Updated to use environment variables
+// LinkedIn API Routes - Fixed version with better error handling
 const express = require('express');
 const router = express.Router();
 const LinkedInIntegrationService = require('../services/LinkedinIntegratedServices');
 const path = require('path');
 
 // Initialize LinkedIn services
-const linkedInService = new LinkedInIntegrationService();
+let linkedInService = null;
+let serviceInitError = null;
+
+// Try to initialize service
+try {
+    linkedInService = new LinkedInIntegrationService();
+} catch (error) {
+    serviceInitError = error.message;
+    console.error('❌ Failed to initialize LinkedIn service:', error.message);
+}
 
 // POST /api/linkedin/analyze - Start LinkedIn analysis (only requires profileUrl)
 router.post('/analyze', async (req, res) => {
     try {
+        // Check if service is initialized
+        if (!linkedInService) {
+            return res.status(500).json({
+                success: false,
+                error: `Service initialization failed: ${serviceInitError}`
+            });
+        }
+
         const { profileUrl } = req.body;
         
-        // Validate required field - only profileUrl is needed now
+        // Validate required field
         if (!profileUrl) {
             return res.status(400).json({
                 success: false,
@@ -30,7 +47,7 @@ router.post('/analyze', async (req, res) => {
         
         console.log('📊 Starting LinkedIn analysis for:', profileUrl);
         
-        // Run complete analysis - credentials are read from environment variables
+        // Run complete analysis
         const result = await linkedInService.runCompleteAnalysis(profileUrl);
         
         console.log('🔍 Analysis result structure:', {
@@ -50,15 +67,26 @@ router.post('/analyze', async (req, res) => {
                 analysisData: result.analysisData || null
             };
             
-            // Only add reportUrl if htmlReportPath exists
+            // Only add URLs if files exist
             if (result.htmlReportPath) {
                 responseData.reportUrl = `/api/linkedin/report/${path.basename(result.htmlReportPath)}`;
+            }
+            
+            if (result.screenshotPath) {
+                responseData.screenshotUrl = `/api/linkedin/screenshot/${path.basename(result.screenshotPath)}`;
+            }
+            
+            // Add warnings for missing features
+            const warnings = [];
+            if (!result.analysisData && !process.env.GEMINI_API_KEY) {
+                warnings.push('AI analysis skipped - GEMINI_API_KEY not configured');
             }
             
             res.json({
                 success: true,
                 message: 'LinkedIn analysis completed successfully',
-                data: responseData
+                data: responseData,
+                warnings: warnings.length > 0 ? warnings : undefined
             });
         } else {
             res.status(500).json({
@@ -70,11 +98,16 @@ router.post('/analyze', async (req, res) => {
     } catch (error) {
         console.error('❌ LinkedIn analysis error:', error);
         
-        // Check if error is due to missing environment variables
+        // Provide specific error messages
         if (error.message.includes('Missing required environment variables')) {
             res.status(500).json({
                 success: false,
-                error: 'Server configuration error: Missing required environment variables'
+                error: 'Server configuration error: Missing required environment variables. Please check LINKEDIN_EMAIL and LINKEDIN_PASSWORD.'
+            });
+        } else if (error.message.includes('GEMINI_API_KEY')) {
+            res.status(500).json({
+                success: false,
+                error: 'AI analysis unavailable: GEMINI_API_KEY not configured. Screenshot capture is still available.'
             });
         } else {
             res.status(500).json({
@@ -91,7 +124,7 @@ router.get('/report/:filename', (req, res) => {
         const { filename } = req.params;
         const reportPath = path.join(__dirname, '../linkedin_analysis', filename);
         
-        // Security check - ensure file is HTML and exists
+        // Security check
         if (!filename.endsWith('.html')) {
             return res.status(400).json({ error: 'Invalid file type' });
         }
@@ -112,6 +145,13 @@ router.get('/report/:filename', (req, res) => {
 // GET /api/linkedin/analysis/:filename - Get analysis JSON data
 router.get('/analysis/:filename', async (req, res) => {
     try {
+        if (!linkedInService) {
+            return res.status(500).json({
+                success: false,
+                error: `Service not available: ${serviceInitError}`
+            });
+        }
+
         const { filename } = req.params;
         const analysisPath = path.join(__dirname, '../linkedin_analysis', filename);
         
@@ -143,9 +183,16 @@ router.get('/analysis/:filename', async (req, res) => {
     }
 });
 
-// POST /api/linkedin/quick-screenshot - Take screenshot only (only requires profileUrl)
+// POST /api/linkedin/quick-screenshot - Take screenshot only
 router.post('/quick-screenshot', async (req, res) => {
     try {
+        if (!linkedInService) {
+            return res.status(500).json({
+                success: false,
+                error: `Service not available: ${serviceInitError}`
+            });
+        }
+
         const { profileUrl } = req.body;
         
         if (!profileUrl) {
@@ -155,7 +202,6 @@ router.post('/quick-screenshot', async (req, res) => {
             });
         }
 
-        // Validate URL format
         if (!profileUrl.includes('linkedin.com')) {
             return res.status(400).json({
                 success: false,
@@ -165,10 +211,8 @@ router.post('/quick-screenshot', async (req, res) => {
         
         console.log('📸 Taking LinkedIn screenshot for:', profileUrl);
         
-        // Credentials are read from environment variables
         const screenshotPath = await linkedInService.takeLinkedInScreenshot(profileUrl);
         
-        // Add null check for screenshotPath
         if (!screenshotPath) {
             throw new Error('Screenshot failed - no path returned');
         }
@@ -185,11 +229,10 @@ router.post('/quick-screenshot', async (req, res) => {
     } catch (error) {
         console.error('❌ Screenshot error:', error);
         
-        // Check if error is due to missing environment variables
         if (error.message.includes('Missing required environment variables')) {
             res.status(500).json({
                 success: false,
-                error: 'Server configuration error: Missing required environment variables'
+                error: 'Server configuration error: Missing LINKEDIN_EMAIL and LINKEDIN_PASSWORD environment variables.'
             });
         } else {
             res.status(500).json({
@@ -224,114 +267,99 @@ router.get('/screenshot/:filename', (req, res) => {
     }
 });
 
-// GET /api/linkedin/status - Check service status
-router.get('/status', (req, res) => {
+// GET /api/linkedin/debug - Debug endpoint
+router.get('/debug', async (req, res) => {
     try {
-        // Create a temporary service instance to check environment variables
-        const testService = new LinkedInIntegrationService();
+        const envCheck = {
+            linkedinEmail: !!process.env.LINKEDIN_EMAIL,
+            linkedinPassword: !!process.env.LINKEDIN_PASSWORD,
+            geminiApiKey: !!process.env.GEMINI_API_KEY
+        };
+
+        let debugInfo = null;
+        let serviceError = serviceInitError;
         
+        if (linkedInService) {
+            try {
+                debugInfo = await linkedInService.getDebugInfo();
+            } catch (error) {
+                serviceError = error.message;
+            }
+        }
+
         res.json({
-            success: true,
-            message: 'LinkedIn integration service is running',
+            success: !!linkedInService,
             timestamp: new Date().toISOString(),
-            directories: {
-                screenshots: './screenshots',
-                analysis: './linkedin_analysis'
+            environment: {
+                nodeEnv: process.env.NODE_ENV,
+                platform: process.platform,
+                cwd: process.cwd()
             },
-            environmentVariables: {
-                linkedinEmail: !!process.env.LINKEDIN_EMAIL,
-                linkedinPassword: !!process.env.LINKEDIN_PASSWORD,
-                geminiApiKey: !!process.env.GEMINI_API_KEY
+            environmentVariables: envCheck,
+            serviceDebugInfo: debugInfo,
+            serviceError,
+            serviceInitialization: {
+                initialized: !!linkedInService,
+                error: serviceInitError
+            },
+            recommendations: {
+                missingEnvVars: Object.entries(envCheck)
+                    .filter(([, exists]) => !exists)
+                    .map(([key]) => key),
+                nextSteps: [
+                    envCheck.linkedinEmail ? null : 'Set LINKEDIN_EMAIL environment variable',
+                    envCheck.linkedinPassword ? null : 'Set LINKEDIN_PASSWORD environment variable',
+                    envCheck.geminiApiKey ? null : 'Set GEMINI_API_KEY environment variable (optional for screenshot-only mode)'
+                ].filter(Boolean)
             }
         });
+        
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: 'LinkedIn integration service configuration error',
             error: error.message,
             timestamp: new Date().toISOString()
         });
     }
-    // Add this debug endpoint to your routes file
-router.get('/debug-env', (req, res) => {
-    res.json({
-        success: true,
-        message: 'Environment variable debug info',
-        timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV,
-        environmentVariables: {
-            // Check if variables exist and show first 3 characters for security
-            linkedinEmail: {
-                exists: !!process.env.LINKEDIN_EMAIL,
-                value: process.env.LINKEDIN_EMAIL ? process.env.LINKEDIN_EMAIL.substring(0, 3) + '...' : null
-            },
-            linkedinPassword: {
-                exists: !!process.env.LINKEDIN_PASSWORD,
-                value: process.env.LINKEDIN_PASSWORD ? '***' : null
-            },
-            geminiApiKey: {
-                exists: !!process.env.GEMINI_API_KEY,
-                value: process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.substring(0, 3) + '...' : null
-            }
-        },
-        allEnvKeys: Object.keys(process.env).filter(key => 
-            key.includes('LINKEDIN') || key.includes('GEMINI')
-        )
-    });
 });
 
-});
-
-module.exports = router;
-
-
-// GET /api/linkedin/status - Check service status (Fixed version)
+// GET /api/linkedin/status - Check service status
 router.get('/status', (req, res) => {
     try {
-        // Check environment variables directly without creating service instance
         const envVars = {
             linkedinEmail: !!process.env.LINKEDIN_EMAIL,
             linkedinPassword: !!process.env.LINKEDIN_PASSWORD,
             geminiApiKey: !!process.env.GEMINI_API_KEY
         };
 
-        // Check for missing variables
-        const required = ['LINKEDIN_EMAIL', 'LINKEDIN_PASSWORD', 'GEMINI_API_KEY'];
+        const required = ['LINKEDIN_EMAIL', 'LINKEDIN_PASSWORD'];
         const missing = required.filter(key => !process.env[key]);
 
-        // Try to create service instance to test full initialization
-        let serviceStatus = 'OK';
-        let serviceError = null;
-        
-        try {
-            const testService = new LinkedInIntegrationService();
-            serviceStatus = 'Initialized successfully';
-        } catch (error) {
-            serviceStatus = 'Failed to initialize';
-            serviceError = error.message;
-        }
-
         res.json({
-            success: missing.length === 0,
-            message: missing.length === 0 
-                ? 'LinkedIn integration service is running' 
-                : 'LinkedIn integration service has configuration issues',
+            success: missing.length === 0 && !!linkedInService,
+            message: !linkedInService 
+                ? `Service initialization failed: ${serviceInitError}`
+                : missing.length === 0 
+                    ? 'LinkedIn integration service is ready' 
+                    : 'LinkedIn integration service has configuration issues',
             timestamp: new Date().toISOString(),
+            serviceInitialization: {
+                initialized: !!linkedInService,
+                error: serviceInitError
+            },
             directories: {
                 screenshots: './screenshots',
                 analysis: './linkedin_analysis'
             },
             environmentVariables: envVars,
             missingVariables: missing,
-            serviceStatus,
-            serviceError,
-            // Debug info
+            capabilities: {
+                screenshotCapture: missing.length === 0 && !!linkedInService,
+                aiAnalysis: envVars.geminiApiKey && !!linkedInService,
+                fullAnalysis: missing.length === 0 && envVars.geminiApiKey && !!linkedInService
+            },
             nodeEnv: process.env.NODE_ENV,
-            platform: process.platform,
-            // Show all environment variable keys (for debugging)
-            allEnvKeys: Object.keys(process.env).filter(key => 
-                key.includes('LINKEDIN') || key.includes('GEMINI') || key.includes('VERCEL')
-            )
+            platform: process.platform
         });
         
     } catch (error) {
@@ -340,7 +368,6 @@ router.get('/status', (req, res) => {
             message: 'LinkedIn integration service configuration error',
             error: error.message,
             timestamp: new Date().toISOString(),
-            // Show environment variable status even when there's an error
             environmentVariables: {
                 linkedinEmail: !!process.env.LINKEDIN_EMAIL,
                 linkedinPassword: !!process.env.LINKEDIN_PASSWORD,
@@ -349,3 +376,5 @@ router.get('/status', (req, res) => {
         });
     }
 });
+
+module.exports = router;

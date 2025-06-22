@@ -1,4 +1,4 @@
-// LinkedInIntegrationService.js - Updated to use environment variables
+// LinkedInIntegrationService.js - Fixed version with proper error handling
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const path = require('path');
@@ -16,17 +16,24 @@ class LinkedInIntegrationService {
         this.linkedinPassword = process.env.LINKEDIN_PASSWORD;
         this.geminiApiKey = process.env.GEMINI_API_KEY;
 
-        // Validate environment variables
+        // Only validate LinkedIn credentials as required
+        // Gemini API key is optional for screenshot-only functionality
         this.validateEnvironmentVariables();
         this.ensureDirectories();
     }
 
     validateEnvironmentVariables() {
-        const required = ['LINKEDIN_EMAIL', 'LINKEDIN_PASSWORD', 'GEMINI_API_KEY'];
+        // Only LinkedIn credentials are required
+        const required = ['LINKEDIN_EMAIL', 'LINKEDIN_PASSWORD'];
         const missing = required.filter(key => !process.env[key]);
         
         if (missing.length > 0) {
             throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+        }
+
+        // Warn if Gemini API key is missing (needed for AI analysis)
+        if (!this.geminiApiKey) {
+            console.log('⚠️  GEMINI_API_KEY not found - AI analysis will be disabled');
         }
     }
 
@@ -50,7 +57,7 @@ class LinkedInIntegrationService {
         console.log('🔍 Starting LinkedIn screenshot process...');
 
         const browser = await puppeteer.launch({
-            headless: true, // Keep this for debugging
+            headless: true,
             defaultViewport: null,
             args: [
                 '--no-sandbox',
@@ -63,7 +70,7 @@ class LinkedInIntegrationService {
                 '--disable-gpu'
             ],
             userDataDir: './linkedin_session',
-            timeout: 60000 // Increase timeout
+            timeout: 60000
         });
 
         const page = await browser.newPage();
@@ -78,7 +85,6 @@ class LinkedInIntegrationService {
                 console.log('✅ Already logged in!');
             } catch {
                 console.log('🔐 Logging in...');
-                // Use environment variables for credentials
                 await page.type('#username', this.linkedinEmail, { delay: 100 });
                 await page.type('#password', this.linkedinPassword, { delay: 100 });
 
@@ -152,16 +158,27 @@ class LinkedInIntegrationService {
         }
     }
 
-    // Updated method - uses environment variable for API key
+    // Updated method with proper error handling
     async analyzeLinkedInProfile(screenshotPath) {
         console.log('🤖 Starting LinkedIn profile analysis...');
-        return new Promise((resolve, reject) => {
-            this.createPythonAnalysisScript();
+        
+        // Check if Gemini API key is available
+        if (!this.geminiApiKey) {
+            throw new Error('GEMINI_API_KEY not found in environment variables');
+        }
 
+        // Check if Python script exists
+        try {
+            await fs.access(this.pythonScript);
+        } catch (error) {
+            console.log('⚠️  Python analysis script not found.');
+        }
+
+        return new Promise((resolve, reject) => {
             const pythonProcess = spawn('python3', [
                 this.pythonScript,
                 screenshotPath,
-                this.geminiApiKey, // Use environment variable
+                this.geminiApiKey,
                 this.analysisDir
             ]);
 
@@ -183,8 +200,15 @@ class LinkedInIntegrationService {
                     const analysisResult = this.parseAnalysisOutput(outputData);
                     resolve(analysisResult);
                 } else {
+                    console.error(`❌ Python analysis failed with code ${code}`);
+                    console.error(`Error output: ${errorData}`);
                     reject(new Error(`Analysis failed with code ${code}: ${errorData}`));
                 }
+            });
+
+            pythonProcess.on('error', (error) => {
+                console.error('❌ Failed to start Python process:', error);
+                reject(new Error(`Failed to start Python analysis: ${error.message}`));
             });
         });
     }
@@ -202,6 +226,20 @@ class LinkedInIntegrationService {
 
     async getAnalysisData(analysisJsonPath) {
         try {
+            // Add null check
+            if (!analysisJsonPath) {
+                console.log('⚠️  Analysis JSON path is null or undefined');
+                return null;
+            }
+
+            // Check if file exists
+            try {
+                await fs.access(analysisJsonPath);
+            } catch (error) {
+                console.log(`⚠️  Analysis file does not exist: ${analysisJsonPath}`);
+                return null;
+            }
+
             const data = await fs.readFile(analysisJsonPath, 'utf8');
             return JSON.parse(data);
         } catch (error) {
@@ -210,38 +248,79 @@ class LinkedInIntegrationService {
         }
     }
 
-    async createPythonAnalysisScript() {
-        const pythonScriptContent = await fs.readFile('./scripts/linkedin_analysis.py', 'utf8');
-        try {
-            await fs.writeFile(this.pythonScript, pythonScriptContent);
-        } catch (error) {
-            console.error('Error creating Python script:', error);
-        }
-    }
 
-    // Updated method - only takes profileUrl as parameter
+    // Updated method with better error handling
     async runCompleteAnalysis(profileUrl) {
         try {
             console.log('🚀 Starting complete LinkedIn analysis...');
+            
+            // Step 1: Take screenshot (always works)
             const screenshotPath = await this.takeLinkedInScreenshot(profileUrl);
-            const analysisResult = await this.analyzeLinkedInProfile(screenshotPath);
-            const analysisData = await this.getAnalysisData(analysisResult.analysisJsonPath);
+            console.log('📸 Screenshot completed successfully');
+            
+            let analysisResult = null;
+            let analysisData = null;
+            
+            // Step 2: Try AI analysis (only if API key is available)
+            if (this.geminiApiKey) {
+                try {
+                    console.log('🤖 Step 2: Analyzing LinkedIn profile...');
+                    analysisResult = await this.analyzeLinkedInProfile(screenshotPath);
+                    console.log('✅ Profile analysis completed');
+                    
+                    // Step 3: Load analysis data
+                    if (analysisResult && analysisResult.analysisJsonPath) {
+                        analysisData = await this.getAnalysisData(analysisResult.analysisJsonPath);
+                        console.log('📊 Analysis data loaded successfully');
+                    }
+                } catch (error) {
+                    console.error('❌ Profile analysis failed:', error.message);
+                    // Continue with screenshot-only result
+                }
+            } else {
+                console.log('⚠️  Skipping AI analysis - GEMINI_API_KEY not found');
+            }
 
             console.log('✅ LinkedIn analysis completed successfully!');
             return {
+                success: true,
                 screenshotPath,
-                htmlReportPath: analysisResult.htmlReportPath,
-                analysisJsonPath: analysisResult.analysisJsonPath,
-                analysisData,
-                success: true
+                htmlReportPath: analysisResult?.htmlReportPath || null,
+                analysisJsonPath: analysisResult?.analysisJsonPath || null,
+                analysisData: analysisData || null
             };
         } catch (error) {
             console.error('❌ LinkedIn analysis failed:', error);
-            return { success: false, error: error.message };
+            return { 
+                success: false, 
+                error: error.message,
+                screenshotPath: null,
+                htmlReportPath: null,
+                analysisJsonPath: null,
+                analysisData: null
+            };
         }
+    }
+
+    // Add debug method
+    async getDebugInfo() {
+        return {
+            directories: {
+                screenshots: this.screenshotDir,
+                analysis: this.analysisDir,
+                pythonScript: this.pythonScript
+            },
+            credentials: {
+                linkedinEmail: !!this.linkedinEmail,
+                linkedinPassword: !!this.linkedinPassword,
+                geminiApiKey: !!this.geminiApiKey
+            },
+            capabilities: {
+                screenshotCapture: !!(this.linkedinEmail && this.linkedinPassword),
+                aiAnalysis: !!this.geminiApiKey
+            }
+        };
     }
 }
 
 module.exports = LinkedInIntegrationService;
-
-
