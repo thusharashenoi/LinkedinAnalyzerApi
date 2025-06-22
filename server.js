@@ -8,16 +8,8 @@ const PORT = process.env.PORT || 3000;
 app.options('*', cors()); 
 // CORS Configuration - Updated
 const corsOptions = {
-    origin: [
-        'http://localhost:8080',
-        'http://localhost:3000',
-        'http://localhost:5173', // Common Vite dev server port
-        'http://127.0.0.1:8080',
-        'http://127.0.0.1:3000',
-        'http://127.0.0.1:5173',
-        'https://proprepai.netlify.app',
-        'https://linkedinanalyzerapi.onrender.com' // Add your Render.com domain
-    ],
+    origin: true ,// Add your Render.com domain
+
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
         'Content-Type',
