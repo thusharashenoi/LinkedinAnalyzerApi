@@ -1010,12 +1010,12 @@ class InteractiveLinkedInAnalyzer:
         print(f"📋 Coordinates: {coords_file if section_coordinates else 'Not detected'}")
         print(f"📊 Raw Analysis: {analysis_file}")
         
-        # # Automatically open the report
-        # try:
-        #     webbrowser.open(f'file://{os.path.abspath(report_path)}')
-        #     print("🚀 Opening report in browser...")
-        # except:
-        #     print("💡 Please manually open the HTML file in your browser")
+        # Automatically open the report
+        try:
+            webbrowser.open(f'file://{os.path.abspath(report_path)}')
+            print("🚀 Opening report in browser...")
+        except:
+            print("💡 Please manually open the HTML file in your browser")
         
         return {
             'html_report': report_path,

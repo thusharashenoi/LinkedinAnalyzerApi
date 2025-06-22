@@ -1,43 +1,4 @@
-// const express = require('express');
-// const cors = require('cors');
-// const helmet = require('helmet');
-// require('dotenv').config();
 
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-
-// // Middleware
-// app.use(helmet());
-// app.use(cors());
-// app.use(express.json({ limit: '10mb' }));
-// app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-
-// // Routes
-// const linkedinRoutes = require('./Routes/linkedin');
-// app.use('/api/linkedin', linkedinRoutes);
-
-// // Health check
-// app.get('/health', (req, res) => {
-//     res.json({ 
-//         status: 'ok', 
-//         timestamp: new Date().toISOString(),
-//         service: 'LinkedIn Backend Service'
-//     });
-// });
-
-// // Error handling - temporary debugging version
-// app.use((err, req, res, next) => {
-//     console.error('❌ Full Error Details:', err);
-//     res.status(500).json({ 
-//         error: 'Something went wrong!',
-//         details: err.message,
-//         stack: err.stack
-//     });
-// });
-
-// app.listen(PORT, () => {
-//     console.log(`🚀 LinkedIn Backend Service running on port ${PORT}`);
-// });
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -54,7 +15,8 @@ const corsOptions = {
         'http://localhost:5173', // Common Vite dev server port
         'http://127.0.0.1:8080',
         'http://127.0.0.1:3000',
-        'http://127.0.0.1:5173'
+        'http://127.0.0.1:5173',
+        'https://proprepai.netlify.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [

@@ -1,262 +1,236 @@
 {
-  "overall_score": 70,
-  "overall_feedback": "This LinkedIn profile shows potential but requires strategic optimization to stand out in a competitive landscape. The profile needs a stronger focus on quantifiable achievements and a more compelling narrative to attract recruiters and hiring managers. Several sections need significant enhancement to better showcase skills and experience. A key opportunity is improving the headline to better reflect the candidate's immediate career goals.",
+  "overall_score": 68,
+  "overall_feedback": "This profile shows promise but needs significant optimization to stand out in a competitive environment. The profile lacks quantifiable achievements and a strong personal brand narrative. Focus on clarifying the value proposition and demonstrating impact.",
   "critical_issues": [
-    "Weak headline lacking specific targeting and value proposition.",
-    "Insufficient quantification of accomplishments in experience section.",
-    "Limited endorsement count on key skills.",
-    "Generic 'About' section lacking a strong narrative and clear call-to-action.",
-    "Missing key information regarding volunteer experience and projects."
+    "Headline is keyword-stuffed and lacks a clear value proposition for recruiters.",
+    "Summary/About section needs to be more engaging and achievement-oriented.",
+    "Experience entries lack quantifiable results and action verbs to showcase impact.",
+    "Skills section needs strategic pruning and endorsements to highlight core competencies.",
+    "Background banner is missing and should be used to showcase personal brand."
   ],
   "competitive_advantages": [
-    "Consistent branding with professional photo and clear section headings.",
-    "Active posting history demonstrating engagement and thought leadership.",
-    "Relevant internships and experience at recognizable companies.",
-    "Strong academic record with high GPA and relevant awards."
+    "Active LinkedIn presence demonstrated through recent posts and activity.",
+    "Completion of relevant certifications like English proficiency is a positive indicator."
   ],
   "sections": [
     {
       "name": "Profile Photo",
       "coordinates": [
-        0,
-        0
+        2.0,
+        13.0
       ],
       "criticality": "yellow",
-      "score": 75,
-      "comment": "The profile photo is professional and well-lit, which is positive. However, the background is a bit generic. While the attire is suitable, a more vibrant and engaging background would elevate the photo's impact. Consider a subtle background that complements the candidate's field (AI/ML) without being distracting. Focus on making it more memorable while maintaining professionalism.",
-      "priority": 4,
+      "score": 70,
+      "comment": "The profile photo is generally acceptable, exhibiting good lighting and a clear view of the face. However, it lacks distinctiveness and a strong personal brand element. A more professional setting or visually appealing background could enhance its impact.",
+      "priority": 7,
       "improvements": [
-        "Experiment with a slightly more engaging background.",
-        "Ensure the photo is high-resolution and well-cropped.",
-        "Consider a subtle professional filter to enhance visual appeal."
+        "Consider a higher-resolution image.",
+        "Experiment with professional headshots in different environments.",
+        "Ensure the background complements the personal brand and career aspirations."
       ],
-      "industry_benchmark": "Top 10% have professional headshots with branded or visually appealing backgrounds that subtly hint at their expertise.",
-      "impact_on_opportunities": "A stronger photo can significantly increase profile views and connection requests.",
-      "detailed_analysis": "While the current photo is acceptable, it doesn't fully leverage the opportunity to create a strong first impression. Small improvements in background and editing can make a notable difference. The photo is professional but lacks memorability."
+      "industry_benchmark": "Top 10% of professionals use high-quality, professionally taken headshots that convey confidence and approachability.",
+      "impact_on_opportunities": "A stronger profile photo can increase profile views and connection requests.",
+      "detailed_analysis": "While the current photo is adequate, it doesn't actively contribute to the personal brand. Think about how to make the image more memorable and reflective of professional identity. Consider incorporating brand colors or a relevant background."
     },
     {
       "name": "Background banner",
       "coordinates": [
-        0,
-        0
+        1.0,
+        5.0
       ],
       "criticality": "red",
-      "score": 40,
-      "comment": "There is no background banner present which is a huge missed opportunity. The background banner is a prime piece of real estate to highlight skills, experience, or personal branding. It makes your profile look incomplete.",
+      "score": 0,
+      "comment": "A background banner is absent. This is a missed opportunity to visually reinforce the personal brand and career aspirations. Top candidates leverage this space to showcase portfolio work, highlight key skills, or present a compelling value proposition.",
       "priority": 1,
       "improvements": [
-        "Create a custom banner showcasing AI/ML skills, projects, or personal brand.",
-        "Incorporate relevant keywords and a clear value proposition.",
-        "Use high-quality images or graphics to ensure a professional look."
+        "Design a banner that reflects AI/ML expertise, either with relevant imagery, key projects, or a personal tagline.",
+        "Ensure the banner is visually appealing and mobile-optimized.",
+        "Update the banner regularly to keep the profile fresh and engaging."
       ],
-      "industry_benchmark": "Top 10% have banners visually branded with their area of expertise and a clear value prop.",
-      "impact_on_opportunities": "Severely impacts first impression and lack of targeted branding opportunities",
-      "detailed_analysis": "The banner allows you to further brand yourself or list your services or some of your top accomplishments. It is highly recommended to make one and place it on your profile."
+      "industry_benchmark": "Leading professionals utilize visually striking background banners that immediately communicate their expertise and personal brand.",
+      "impact_on_opportunities": "A compelling banner can significantly improve first impressions and encourage recruiters to explore the profile further.",
+      "detailed_analysis": "The lack of a banner represents a major branding gap. Potential recruiters instantly lose an opportunity to learn more about the candidate. Create a banner highlighting project accomplishments or key skills. Consider using tools like Canva for easy banner creation."
     },
     {
       "name": "Headline/title",
       "coordinates": [
-        0,
-        0
+        2.0,
+        15.5
       ],
       "criticality": "red",
-      "score": 55,
-      "comment": "The current headline is too generic. While it lists relevant keywords (AI/ML, Innovation), it lacks a strong value proposition or specific targeting. The title needs to be more specific about the candidate's career aspirations and what they bring to the table. It is important to remember that the headline can impact being found in searches.",
-      "priority": 1,
+      "score": 50,
+      "comment": "The headline is excessively keyword-stuffed and lacks a clear value proposition. While keywords are important, the headline should concisely communicate the unique value the candidate brings to the table. Focus on highlighting the most impactful skills and career aspirations.",
+      "priority": 2,
       "improvements": [
-        "Reframe the headline to focus on target roles (e.g., 'AI Engineer | Machine Learning Specialist | Driving Innovation in [Industry]')",
-        "Highlight key skills and quantifiable achievements within the character limit.",
-        "Consider adding a specific call-to-action (e.g., 'Open to AI/ML Internship Opportunities')",
-        "Remove vague terms like 'fitness enthusiast'"
+        "Refine the headline to focus on 2-3 core competencies and the target role.",
+        "Incorporate action verbs to demonstrate expertise and impact.",
+        "Keep the headline concise and within the character limit."
       ],
-      "industry_benchmark": "Top 10% use headlines that clearly state their role, expertise, and value proposition with relevant keywords.",
-      "impact_on_opportunities": "A weak headline drastically reduces the profile's visibility in searches and fails to capture the attention of recruiters.",
-      "detailed_analysis": "The headline is the first text recruiters and other Linkedin users see. Currently the headline acts as a brief description of who the user is and the different areas they are involved in. The headline can be improved by providing a specific value proposition for recruiters. Consider what value you bring to an organization. If you are looking for a role, consider placing words such as 'Seeking AI Internship'"
+      "industry_benchmark": "Top candidates use headlines that concisely convey their value proposition and target role, such as 'AI Engineer | Machine Learning Expert | Driving Innovation at Scale'.",
+      "impact_on_opportunities": "A clear and compelling headline dramatically improves profile visibility and attracts relevant job opportunities.",
+      "detailed_analysis": "The current headline reads like a list of keywords. A better approach would be something like: 'AI/ML Engineer | PwC Intern | Developing Intelligent Solutions for Business Transformation'. This provides immediate context and highlights key skills."
     },
     {
-      "name": "About",
+      "name": "Summary/About section",
       "coordinates": [
-        4.5,
-        15.6
+        2.0,
+        23.0
       ],
       "criticality": "yellow",
-      "score": 68,
-      "comment": "The 'About' section provides a basic overview but lacks a compelling narrative and a clear call to action. It reads more like a generic summary than a personal branding statement. The description can be improved by incorporating quantifiable achievements and a more engaging storytelling approach. You have great starting material but need to focus on value.",
+      "score": 65,
+      "comment": "The summary is generic and lacks quantifiable achievements and a strong call-to-action. It needs to be more engaging and tell a compelling story about the candidate's passion, skills, and career goals. Quantify achievements whenever possible and include a clear call-to-action to encourage engagement.",
       "priority": 3,
       "improvements": [
-        "Start with a hook that grabs the reader's attention and clearly states the candidate's value proposition.",
-        "Incorporate quantifiable achievements and impact metrics from past experiences.",
-        "Show, don't tell. Give details on how you empower underserved communities.",
-        "Include a specific call to action, such as inviting connections or requesting informational interviews.",
-        "Tailor the 'About' section to align with target roles and industries."
+        "Rewrite the summary to focus on key achievements and impact metrics.",
+        "Incorporate storytelling elements to engage the reader and highlight personality.",
+        "Include a clear call-to-action, such as inviting connections or showcasing specific projects."
       ],
-      "industry_benchmark": "Top 10% use a compelling narrative, showcase quantifiable achievements, and end with a clear call to action.",
-      "impact_on_opportunities": "A weak 'About' section fails to engage recruiters and hiring managers, leading to fewer opportunities.",
-      "detailed_analysis": "The 'About' section currently describes who the person is and their aspirations. However, it does not show the reader. Add in examples and quantify them. Also, adding a goal and ending with a call to action can also improve the section and generate more engagement."
+      "industry_benchmark": "Leading professionals use the summary to highlight their unique value proposition, showcase key accomplishments, and provide clear contact information or calls-to-action.",
+      "impact_on_opportunities": "A well-crafted summary significantly increases the chances of recruiters contacting the candidate for relevant opportunities.",
+      "detailed_analysis": "The current summary is too general. Focus on quantifiable achievements: 'Developed X intelligent solutions resulting in Y increase in efficiency' or 'Led a team of Z to achieve A results'. Include a clear call to action such as 'Connect with me to discuss AI/ML opportunities' or 'View my portfolio at [link]'."
     },
     {
       "name": "Experience",
       "coordinates": [
-        4.5,
-        39.0
+        6.8,
+        36.3
       ],
       "criticality": "yellow",
-      "score": 72,
-      "comment": "The experience section lists relevant internships and roles, but it lacks sufficient detail on quantifiable achievements and impact metrics. Job descriptions are vague. Improve the detail within the section to properly highlight your experience. Focus on the tasks and the impact of them and use metrics.",
-      "priority": 2,
+      "score": 70,
+      "comment": "Experience entries lack quantifiable results and impact metrics. While the job titles and company descriptions are present, the descriptions need to be more focused on accomplishments and contributions. Use action verbs and quantify results to demonstrate impact.",
+      "priority": 4,
       "improvements": [
-        "For each role, quantify accomplishments using metrics (e.g., 'Improved efficiency by 15%', 'Developed a model that reduced errors by 10%').",
-        "Use action verbs to describe responsibilities and contributions.",
-        "Tailor descriptions to align with target roles and industries.",
-        "Highlight key skills used in each role."
+        "Rewrite experience descriptions to focus on key accomplishments and contributions.",
+        "Quantify results whenever possible using metrics and data.",
+        "Use action verbs to highlight skills and responsibilities."
       ],
-      "industry_benchmark": "Top 10% use quantifiable achievements and impact metrics to showcase their contributions in each role.",
-      "impact_on_opportunities": "A weak experience section fails to demonstrate the candidate's capabilities and impact, reducing their chances of landing interviews.",
-      "detailed_analysis": "The experience section has some very impressive companies listed. To further improve the section, add metrics to quantify what you did. The descriptions of what you did at the role also read a bit vague, so consider adding more details."
+      "industry_benchmark": "Top candidates quantify their experience using metrics that demonstrate impact and relevance to target roles. E.g., 'Increased model accuracy by 15% using X technique' or 'Reduced processing time by 20% by implementing Y solution'.",
+      "impact_on_opportunities": "Strong, quantifiable experience entries dramatically increase the chances of recruiters recognizing the candidate's potential and suitability for relevant positions.",
+      "detailed_analysis": "For the SAP Intern role, instead of just stating 'Internship', describe specific projects and quantifiable achievements: 'Developed an AI-powered solution for X, resulting in Y improvement in efficiency'. For the 'Sports Secretary' role, quantify leadership experience: 'Managed a team of X to organize Y events, resulting in Z participation rate'."
     },
     {
       "name": "Education",
       "coordinates": [
-        4.5,
-        55.5
+        6.8,
+        55.0
       ],
       "criticality": "yellow",
-      "score": 78,
-      "comment": "The education section includes relevant academic information, including GPA and activities. Adding relevant coursework or projects would further enhance this section.",
-      "priority": 5,
+      "score": 75,
+      "comment": "The education section is adequately filled, including GPA and activities. To improve it, include specific projects or coursework relevant to AI/ML and add a brief description highlighting key skills acquired during the program. This will directly connect the education to the desired career path.",
+      "priority": 6,
       "improvements": [
-        "List relevant coursework or projects related to AI/ML and data science.",
-        "Highlight any academic achievements or scholarships.",
-        "Add a brief description of key skills learned during the degree."
+        "Add specific relevant projects or coursework.",
+        "Include a brief description highlighting key skills acquired during the program.",
+        "Highlight any relevant honors or awards received during education."
       ],
-      "industry_benchmark": "Top 10% list relevant coursework, projects, and academic achievements to showcase their expertise.",
-      "impact_on_opportunities": "Adding more details to the education section can demonstrate a deeper understanding of relevant concepts and skills.",
-      "detailed_analysis": "The section is adequate, but can be improved by adding course-specific highlights. Listing projects within your education is a great way to brand yourself and highlight skills."
+      "industry_benchmark": "Top candidates explicitly link their education to their career goals by showcasing relevant projects, skills, and achievements within their education section.",
+      "impact_on_opportunities": "A well-detailed education section strengthens the candidate's credibility and demonstrates preparedness for AI/ML roles.",
+      "detailed_analysis": "For Sikkim Manipal Institute of Technology, add a line like: 'Specialized in Deep Learning and Natural Language Processing' or 'Key Projects: Developed a sentiment analysis model using Python and TensorFlow'. This instantly highlights relevant skills to potential employers."
     },
     {
       "name": "Licenses & certifications",
       "coordinates": [
-        4.5,
-        61.8
+        6.8,
+        61.2
       ],
       "criticality": "yellow",
-      "score": 75,
-      "comment": "The Licenses & certifications section includes a relevant English certification. However, the overall section is weak. Adding more certifications related to AI/ML, Data Science, or other technical skills would strengthen the profile.",
-      "priority": 4,
+      "score": 80,
+      "comment": "The certifications section includes an English proficiency certificate. To improve it, add more industry-relevant certifications like TensorFlow Developer Certificate, AWS Certified Machine Learning \u2013 Specialty, or similar AI/ML focused credentials. Highlight the skills gained from these certifications.",
+      "priority": 5,
       "improvements": [
-        "Obtain and add relevant certifications in AI/ML, Data Science, or related fields (e.g., TensorFlow, PyTorch, AWS Certified Machine Learning).",
-        "Highlight the skills and knowledge gained through each certification.",
-        "Ensure certifications are current and valid."
+        "Add industry-relevant certifications like TensorFlow or AWS Machine Learning certifications.",
+        "Highlight the skills gained from each certification.",
+        "Ensure certifications are up-to-date and relevant to the target role."
       ],
-      "industry_benchmark": "Top 10% have multiple industry-recognized certifications that validate their expertise.",
-      "impact_on_opportunities": "A lack of relevant certifications can weaken the candidate's credibility and reduce their chances of being considered for technical roles.",
-      "detailed_analysis": "The section is too weak. You need to add more certifications related to your field. This is a must do for your profile and can greatly impact your chances of landing an internship."
+      "industry_benchmark": "Top candidates demonstrate their expertise with widely recognized and industry-specific certifications. They also showcase the skills gained through these certifications in their experience and skills sections.",
+      "impact_on_opportunities": "Relevant certifications significantly boost credibility and demonstrate a commitment to continuous learning, increasing chances of landing interviews and job offers.",
+      "detailed_analysis": "Obtaining a TensorFlow Developer Certificate or AWS Certified Machine Learning \u2013 Specialty would significantly boost the profile's credibility in the AI/ML domain. Then add it to both the certification and skills sections."
     },
     {
       "name": "Skills",
       "coordinates": [
-        4.5,
-        67.5
+        6.8,
+        66.9
       ],
       "criticality": "yellow",
-      "score": 70,
-      "comment": "The skills section includes a mix of relevant and generic skills. Prioritize key skills related to AI/ML, Data Science, and programming. Increase the number of endorsements on top skills.",
+      "score": 60,
+      "comment": "The skills section needs strategic pruning and endorsements to highlight core competencies. While the list contains general skills, it lacks specific AI/ML skills and sufficient endorsements. Prioritize skills that are most relevant to the target role and actively seek endorsements from colleagues and mentors.",
       "priority": 3,
       "improvements": [
-        "Prioritize key skills related to target roles and industries.",
-        "Obtain endorsements from colleagues and connections for top skills.",
-        "Add more technical skills related to AI/ML (e.g., TensorFlow, PyTorch, scikit-learn).",
-        "Remove generic skills that don't differentiate the candidate."
+        "Prioritize skills that are most relevant to AI/ML and the target role.",
+        "Actively seek endorsements from colleagues and mentors.",
+        "Remove irrelevant or generic skills that do not contribute to the personal brand."
       ],
-      "industry_benchmark": "Top 10% have a comprehensive list of relevant skills with a high number of endorsements from industry professionals.",
-      "impact_on_opportunities": "A weak skills section reduces the profile's visibility in searches and fails to demonstrate the candidate's expertise.",
-      "detailed_analysis": "Focus on adding more technical skills, and be sure to have a lot of endorsements. This can greatly impact your chances of being found by recruiters who are searching for these skills."
+      "industry_benchmark": "Top candidates have a curated list of highly relevant skills with numerous endorsements, demonstrating expertise and credibility in their field.",
+      "impact_on_opportunities": "A well-optimized skills section increases visibility in recruiter searches and strengthens the candidate's overall profile.",
+      "detailed_analysis": "Prioritize skills like TensorFlow, Python, Machine Learning, Deep Learning, and NLP. Remove generic skills and actively seek endorsements for the prioritized skills. A minimum of 10 endorsements for each core skill is a good target."
     },
     {
       "name": "Honors & awards",
       "coordinates": [
-        4.5,
-        73.3
+        6.8,
+        73.2
       ],
       "criticality": "yellow",
       "score": 75,
-      "comment": "Honors and Awards are solid additions to the profile. It shows that the user is excellent at what they do. It may be improved by adding details on impact of the honors and awards. Also, can be improved by adding more.",
-      "priority": 6,
+      "comment": "The honors and awards section is a good starting point. Expand upon the descriptions to highlight the specific achievements that led to these recognitions. Quantify impact or explain the significance of the awards to potential employers.",
+      "priority": 9,
       "improvements": [
-        "Quantify impact of honors and awards",
-        "Continue to apply for and add more honors and awards"
+        "Elaborate on the achievements that led to the honors and awards.",
+        "Quantify impact or explain the significance of the awards.",
+        "Tailor descriptions to showcase skills relevant to the target role."
       ],
-      "industry_benchmark": "Top 10% use quantifiable achievements and impact metrics to showcase their contributions in each role.",
-      "impact_on_opportunities": "A weak experience section fails to demonstrate the candidate's capabilities and impact, reducing their chances of landing interviews.",
-      "detailed_analysis": "The section is pretty solid and shows the achievements the candidate has made. Quantifying how the award helped in the journey can help."
+      "industry_benchmark": "Leading professionals use honors and awards to demonstrate exceptional performance and leadership, often quantifying the impact of their achievements.",
+      "impact_on_opportunities": "Meaningful descriptions of honors and awards enhance the candidate's credibility and attract positive attention from recruiters.",
+      "detailed_analysis": "For 'Award of Academic Excellence', add: 'Awarded for achieving the highest GPA in the AI&DS department and leading the development of X project'. For 'Runners Up for Academics', mention specific achievements that secured the award."
     },
     {
       "name": "Test scores",
       "coordinates": [
-        4.5,
-        79.1
+        6.8,
+        79.2
       ],
       "criticality": "yellow",
-      "score": 75,
-      "comment": "The test score section can be improved by adding more relevant test scores. Add scores that impact your career.",
-      "priority": 6,
+      "score": 70,
+      "comment": "The test scores section is useful, but its impact is limited without context. While high GPAs are positive, consider replacing this section with projects or achievements that showcase those scores in action. For experienced professionals, this section becomes less relevant compared to demonstrable professional achievements.",
+      "priority": 10,
       "improvements": [
-        "Add more relevant scores.",
-        "Quantify impact of test scores on journey"
+        "Consider replacing this section with more impactful content such as personal projects or portfolio items.",
+        "If keeping it, add context about the difficulty or relevance of the scores to the desired field.",
+        "Prioritize showcasing professional achievements over academic test scores."
       ],
-      "industry_benchmark": "Top 10% use quantifiable achievements and impact metrics to showcase their contributions in each role.",
-      "impact_on_opportunities": "A weak experience section fails to demonstrate the candidate's capabilities and impact, reducing their chances of landing interviews.",
-      "detailed_analysis": "The section can be improved by adding other standardized test scores related to the industry."
+      "industry_benchmark": "Top candidates focus on showcasing professional achievements and projects that demonstrate practical skills and experience, rather than relying solely on academic test scores.",
+      "impact_on_opportunities": "While strong test scores are good, demonstrable achievements and projects carry more weight in the eyes of potential employers.",
+      "detailed_analysis": "If choosing to keep the section, add context like 'CGPA Third Year B.Tech - Ranked in the top 5% of the AI&DS department'. However, replacing it with a project demonstrating practical AI/ML skills is the better approach."
     },
     {
       "name": "Languages",
       "coordinates": [
-        4.5,
-        84.7
+        6.8,
+        85.1
       ],
       "criticality": "yellow",
       "score": 70,
-      "comment": "The languages section is a good start, but could be enhanced by demonstrating proficiency in additional languages, particularly those relevant to global AI/ML initiatives.",
-      "priority": 7,
+      "comment": "The languages section lists English and German. This is adequate, but specifying proficiency levels in more detail can enhance its impact. Also, consider adding any programming languages (Python, R, etc.) if comfortable enough to list them as spoken languages alongside English and German.",
+      "priority": 11,
       "improvements": [
-        "Assess current proficiency in German and potentially pursue certification to demonstrate a higher level of competency.",
-        "Consider learning other languages relevant to global AI/ML hubs, such as Mandarin Chinese or Spanish.",
-        "Highlight specific use cases where language skills have been beneficial (e.g., collaborating with international teams)."
+        "Specify proficiency levels (e.g., Native, Fluent, Conversational) for each language.",
+        "Add any programming languages alongside natural languages.",
+        "Consider adding any additional languages relevant to the target industry or location."
       ],
-      "industry_benchmark": "Top 10% possess fluency in multiple languages and can demonstrate their ability to work effectively in international settings.",
-      "impact_on_opportunities": "Proficiency in additional languages can open doors to global opportunities and enhance collaboration with diverse teams.",
-      "detailed_analysis": "Listing a language is great but not if you can't hold a conversation. Prioritize languages that would be helpful in your career."
-    },
-    {
-      "name": "Interests",
-      "coordinates": [
-        4.5,
-        90.4
-      ],
-      "criticality": "yellow",
-      "score": 70,
-      "comment": "The interests section can be a starting point for networking with people with the same interests. However, interests can be improved to better show your career goals.",
-      "priority": 7,
-      "improvements": [
-        "Add people and organizations related to career",
-        "Engage with people to network",
-        "Reach out to employees at companies you like."
-      ],
-      "industry_benchmark": "Top 10% list relevant coursework, projects, and academic achievements to showcase their expertise.",
-      "impact_on_opportunities": "Adding more details to the education section can demonstrate a deeper understanding of relevant concepts and skills.",
-      "detailed_analysis": "The section can be improved by providing more details, but it is not required. Ensure that the interests show your career aspirations."
+      "industry_benchmark": "Top candidates accurately represent their language proficiency levels and highlight any additional languages relevant to their field or target location.",
+      "impact_on_opportunities": "Clearly defined language skills can be a valuable asset in the global AI/ML industry.",
+      "detailed_analysis": "Instead of 'Professional working proficiency' for English, state 'Native'. For German, be more specific: 'Conversational' or 'Elementary proficiency - A2'. If proficient in Python, include it with the proficiency level."
     }
   ],
   "missing_elements": [
-    "Projects section demonstrating technical skills.",
-    "Volunteer experience showcasing leadership and social impact.",
-    "Recommendations from professors, mentors, or supervisors."
+    "Recommendations are missing. Request recommendations from supervisors, colleagues, and professors to build credibility."
   ],
   "next_steps": [
-    "Revamp headline to be more targeted and value-driven (1 week).",
-    "Quantify achievements in experience section and add more detail (2 weeks).",
-    "Obtain relevant certifications in AI/ML and data science (ongoing).",
-    "Request recommendations from professors, mentors, or supervisors (1 week).",
-    "Create and add a background banner that showcases skills and interests (1 week)."
+    "1. Prioritize creating a visually appealing background banner that showcases the personal brand (Timeline: 1 week).",
+    "2. Rewrite the headline to focus on core competencies and value proposition (Timeline: 3 days).",
+    "3. Revamp the summary/about section to highlight quantifiable achievements and include a clear call-to-action (Timeline: 1 week).",
+    "4. Revise experience entries to focus on impact metrics and accomplishments (Timeline: 2 weeks).",
+    "5. Request recommendations from supervisors, colleagues, and professors (Ongoing)."
   ]
 }
