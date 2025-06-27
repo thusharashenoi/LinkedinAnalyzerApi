@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"  # Adjust port if your server uses different port
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./screenshots:/app/screenshots  # Persist screenshots
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,6 +1,6 @@
 {
   "name": "linkedin-backend-service",
-  "version": "1.0.0", 
+  "version": "1.0.0",
   "description": "LinkedIn profile analysis backend service",
   "main": "server.js",
   "scripts": {

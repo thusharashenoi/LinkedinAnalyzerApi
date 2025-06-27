@@ -4,8 +4,8 @@
       "section_name": "Experience",
       "first_letter": "E",
       "title_coordinates": [
-        6.5,
-        36.3
+        7.08,
+        42.32
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -17,8 +17,8 @@
       "section_name": "Education",
       "first_letter": "E",
       "title_coordinates": [
-        6.5,
-        55.0
+        7.08,
+        56.19
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -30,8 +30,8 @@
       "section_name": "Licenses & certifications",
       "first_letter": "L",
       "title_coordinates": [
-        6.5,
-        61.2
+        7.08,
+        63.25
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -43,8 +43,8 @@
       "section_name": "Skills",
       "first_letter": "S",
       "title_coordinates": [
-        6.5,
-        66.9
+        7.08,
+        67.46
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -56,8 +56,8 @@
       "section_name": "Honors & awards",
       "first_letter": "H",
       "title_coordinates": [
-        6.5,
-        73.2
+        7.08,
+        74.12
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -69,8 +69,8 @@
       "section_name": "Test scores",
       "first_letter": "T",
       "title_coordinates": [
-        6.5,
-        79.2
+        7.08,
+        79.39
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -82,8 +82,8 @@
       "section_name": "Languages",
       "first_letter": "L",
       "title_coordinates": [
-        6.5,
-        85.1
+        7.08,
+        84.18
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -95,8 +95,8 @@
   "detection_metadata": {
     "total_sections_found": 7,
     "image_dimensions": [
-      500,
-      1650
+      800,
+      2401
     ],
     "layout_type": "desktop",
     "scroll_position": "top",
