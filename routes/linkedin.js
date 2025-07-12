@@ -122,7 +122,8 @@ router.post('/analyze', async (req, res) => {
 router.get('/report/:filename', (req, res) => {
     try {
         const { filename } = req.params;
-        const reportPath = path.join(__dirname, '../linkedin_analysis', filename);
+        // Change directory to linkedin_analysis_output for HTML reports
+        const reportPath = path.join(__dirname, '../linkedin_analysis_output', filename);
         
         // Security check
         if (!filename.endsWith('.html')) {
