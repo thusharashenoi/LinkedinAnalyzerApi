@@ -1,13 +1,59 @@
-services:
-  - type: web
-    name: linkedin-analyzer-api
-    env: node
-    buildCommand: |
-      npm install
-      npx puppeteer browsers install chrome
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PUPPETEER_EXECUTABLE_PATH
-        value: /opt/render/.cache/puppeteer/chrome/linux-*/chrome-linux64/chrome
+# services:
+#   - type: web
+#     name: linkedin-analyzer-api
+#     env: node
+#     buildCommand: |
+#       npm install
+#       npx puppeteer browsers install chrome
+#     startCommand: npm start
+#     envVars:
+#       - key: NODE_ENV
+#         value: production
+#       - key: PUPPETEER_EXECUTABLE_PATH
+#         value: /opt/render/.cache/puppeteer/chrome/linux-*/chrome-linux64/chrome
+
+
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+// Function to find Chrome executable
+function findChrome() {
+  const possiblePaths = [
+    '/opt/render/.cache/puppeteer/chrome/linux-*/chrome-linux64/chrome',
+    '/opt/render/.cache/puppeteer/chrome/linux-*/chrome-linux/chrome',
+    process.env.PUPPETEER_EXECUTABLE_PATH
+  ];
+  
+  // Try to find Chrome using glob pattern
+  const glob = require('glob');
+  for (const pattern of possiblePaths) {
+    if (pattern && pattern.includes('*')) {
+      const matches = glob.sync(pattern);
+      if (matches.length > 0) {
+        return matches[0];
+      }
+    } else if (pattern && fs.existsSync(pattern)) {
+      return pattern;
+    }
+  }
+  
+  return null;
+}
+
+const browser = await puppeteer.launch({
+  headless: true,
+  executablePath: findChrome(),
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
+    '--disable-gpu',
+    '--disable-web-security',
+    '--disable-features=VizDisplayCompositor'
+  ]
+});
