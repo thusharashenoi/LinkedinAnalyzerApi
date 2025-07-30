@@ -136,12 +136,8 @@ const PORT = process.env.PORT || 3000;
 // CORS Configuration - FIXED
 const corsOptions = {
     origin: [
-        'https://proprepai.netlify.app',
-        'http://localhost:10000',
-        'http://localhost:8080',
-        'https://linkedinanalyzerapi.onrender.com',
-        'http://localhost:3001',
-        'http://localhost:3000'
+        'https://proprepai.netlify.app'
+
     ], // Specific origins instead of true
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
@@ -151,7 +147,8 @@ const corsOptions = {
         'Accept',
         'Origin',
         'Access-Control-Request-Method',
-        'Access-Control-Request-Headers'
+        'Access-Control-Request-Headers',
+        'Access-Control-Allow-Origin'
     ],
     credentials: true,
     optionsSuccessStatus: 200
