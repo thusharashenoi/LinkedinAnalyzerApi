@@ -4,8 +4,8 @@
       "section_name": "Experience",
       "first_letter": "E",
       "title_coordinates": [
-        7.08,
-        42.32
+        4.52,
+        30.65
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -17,21 +17,8 @@
       "section_name": "Education",
       "first_letter": "E",
       "title_coordinates": [
-        7.08,
-        56.19
-      ],
-      "confidence": 95,
-      "font_size_estimate": "medium",
-      "text_style": "bold",
-      "notes": "Clear header at coordinates, bold formatting",
-      "coordinate_precision": "high"
-    },
-    {
-      "section_name": "Licenses & certifications",
-      "first_letter": "L",
-      "title_coordinates": [
-        7.08,
-        63.25
+        4.52,
+        47.19
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -43,8 +30,8 @@
       "section_name": "Skills",
       "first_letter": "S",
       "title_coordinates": [
-        7.08,
-        67.46
+        4.52,
+        57.77
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -56,8 +43,8 @@
       "section_name": "Honors & awards",
       "first_letter": "H",
       "title_coordinates": [
-        7.08,
-        74.12
+        4.52,
+        64.75
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -69,8 +56,8 @@
       "section_name": "Test scores",
       "first_letter": "T",
       "title_coordinates": [
-        7.08,
-        79.39
+        4.52,
+        69.88
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -82,8 +69,8 @@
       "section_name": "Languages",
       "first_letter": "L",
       "title_coordinates": [
-        7.08,
-        84.18
+        4.52,
+        74.8
       ],
       "confidence": 95,
       "font_size_estimate": "medium",
@@ -93,10 +80,10 @@
     }
   ],
   "detection_metadata": {
-    "total_sections_found": 7,
+    "total_sections_found": 6,
     "image_dimensions": [
-      800,
-      2401
+      768,
+      2340
     ],
     "layout_type": "desktop",
     "scroll_position": "top",
